@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Own The Road</title>
+  <link rel="stylesheet" href="stylee.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+
+      <a href="#home" class="logo">
+        <span class="logo-own">OWN</span>
+        <span class="logo-road">THE ROAD</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#cars">Cars</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#" class="login-btn">Login</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-text">
+        <h1>Own The Road.<br>Feel The Power.</h1>
+        <p>
+          Book premium, SUV, sedan, and electric cars easily with flexible pickup,
+          fast booking, and unbeatable prices.
+        </p>
+        <a href="#cars" class="hero-btn" id="find-ride-btn">Find Your Ride</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING BAR -->
+  <div class="booking-bar">
+    <div class="booking-field">
+      <label for="location">Pickup Location</label>
+      <input type="text" id="location" placeholder="Enter location">
+    </div>
+
+    <div class="booking-field">
+      <label for="pickup-date">Pickup Date</label>
+      <input type="date" id="pickup-date">
+    </div>
+
+    <div class="booking-field">
+      <label for="return-date">Return Date</label>
+      <input type="date" id="return-date">
+    </div>
+
+    <div class="booking-field">
+      <label for="car-type">Car Type</label>
+      <select id="car-type">
+        <option value="">All Types</option>
+        <option value="sedan">Sedan</option>
+        <option value="suv">SUV</option>
+        <option value="electric">Electric</option>
+        <option value="premium">Premium</option>
+      </select>
+    </div>
+
+    <button type="button" class="search-btn">Search</button>
+  </div>
+
+  <div class="booking-message" id="booking-message"></div>
+
+  <!-- CARS SECTION -->
+  <section class="cars-section" id="cars">
+    <div class="cars-container">
+
+      <div class="cars-header">
+        <p class="cars-tag">Our Fleet</p>
+        <h2 class="section-title">Popular Now</h2>
+        <p class="section-description">
+          Explore our top-rated collection of premium and electric cars designed for every kind of drive.
+        </p>
+      </div>
+
+      <div class="cars-grid">
+        <div class="car-card" data-category="premium">
+          <img src="S-class.png" alt="Mercedes S-Class">
+          <div class="car-info">
+            <h3>Mercedes S-Class</h3>
+            <p class="car-type">Premium</p>
+            <p class="price">6,500 LE / day</p>
+            <a href="car-details.html" class="book-btn"> View Details</a>
+          </div>
+        </div>
+
+        <div class="car-card" data-category="electric">
+          <img src="BYD.png" alt="BYD Song Plus">
+          <div class="car-info">
+            <h3>BYD Song Plus</h3>
+            <p class="car-type">Electric</p>
+            <p class="price">2,100 LE / day</p>
+            <a href="car-details.html" class="book-btn">View Details</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="features-section" id="about">
+    <div class="features-container">
+      <h2 class="section-title">Why Choose Us</h2>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Easy Booking</h3>
+          <p>Book your car in seconds with a simple and smooth process.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>Affordable Prices</h3>
+          <p>Competitive daily rates with no hidden fees.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🚗</div>
+          <h3>Wide Selection</h3>
+          <p>Choose from SUVs, sedans, electric and premium cars.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📞</div>
+          <h3>24/7 Support</h3>
+          <p>Our team is always ready to help you anytime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2 class="footer-logo">OWN THE ROAD</h2>
+        <p>Premium car rental service for every journey.</p>
+      </div>
+      
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>📍 Cairo, Egypt</p>
+        <p>📞 +20 123 456 7890</p>
+        <p>✉️ info@owntheroad.com</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Own The Road. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="scriptt.js"></script>
+</body>
+</html>
