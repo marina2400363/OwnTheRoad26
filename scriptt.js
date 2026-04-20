@@ -5,7 +5,6 @@ const pickupDateInput = document.getElementById("pickup-date");
 const returnDateInput = document.getElementById("return-date");
 const carTypeSelect = document.getElementById("car-type");
 
-const filterButtons = document.querySelectorAll(".category-btn");
 const carCards = document.querySelectorAll(".car-card");
 const carsSection = document.querySelector(".cars-section");
 const bookingMessage = document.getElementById("booking-message");
@@ -21,34 +20,25 @@ function hideMessage() {
 }
 
 function filterCars(filterValue) {
+  let found = false;
+
   carCards.forEach(function (card) {
     const cardCategory = card.getAttribute("data-category");
 
     if (filterValue === "all" || filterValue === cardCategory) {
       card.style.display = "";
+      found = true;
     } else {
       card.style.display = "none";
     }
   });
 
-  filterButtons.forEach(function (button) {
-    button.classList.remove("active");
-
-    if (button.getAttribute("data-filter") === filterValue) {
-      button.classList.add("active");
-    }
-  });
+  return found;
 }
 
-filterButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    const filterValue = button.getAttribute("data-filter");
-    filterCars(filterValue);
-    hideMessage();
-  });
-});
-
 searchBtn.addEventListener("click", function () {
+  hideMessage();
+
   const locationValue = locationInput.value.trim();
   const pickupDateValue = pickupDateInput.value;
   const returnDateValue = returnDateInput.value;
@@ -65,10 +55,13 @@ searchBtn.addEventListener("click", function () {
   }
 
   const selectedType = carTypeValue === "" ? "all" : carTypeValue;
+  const carsFound = filterCars(selectedType);
 
-  filterCars(selectedType);
-
-  showMessage("Cars filtered successfully.", "success");
+  if (carsFound) {
+    showMessage("Available cars are now shown below.", "success");
+  } else {
+    showMessage("No cars found for the selected category.", "error");
+  }
 
   carsSection.scrollIntoView({
     behavior: "smooth"
