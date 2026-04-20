@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OWN THE ROAD</title>
+    <link rel="stylesheet" href="Cars list.css">
+</head>
+<body>
+     <header class="navbar">
+    <div class="nav-container">
+
+      <a href="#home" class="logo">
+        <span class="logo-own">OWN</span>
+        <span class="logo-road">THE ROAD</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#cars">Cars</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#" class="login-btn">Login</a>
+      </div>
+
+    </div>
+  </header>
+
+    <main>
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Search for a car...">
+            <select id="filterType">
+                <option value="all">All Types</option>
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+                <option value="Sports">Sports</option>
+            </select>
+            <select id="sortPrice">
+                <option value="default">Sort by Price</option>
+                <option value="low">Low to High</option>
+                <option value="high">High to Low</option>
+            </select>
+        </div>
+        <div class="car-grid" id="carGrid"></div>
+    </main>
+    <script src="Cars List.js"></script>
+</body>
+</html>
