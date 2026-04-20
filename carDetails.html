@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Own The Road | Car Details</title>
+  <link rel="stylesheet" href="carDetails.css">
+</head>
+<body>
+
+ <header class="navbar">
+    <div class="nav-container">
+
+      <a href="#home" class="logo">
+        <span class="logo-own">OWN</span>
+        <span class="logo-road">THE ROAD</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#cars">Cars</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#" class="login-btn">Login</a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="car-details-section">
+    <div class="car-details-container">
+
+      <section class="car-image-section">
+        <img id="carImage" src="" alt="Car Image">
+
+        <div class="image-thumbnails">
+          <img class="thumb active-thumb" id="thumb1" src="" alt="Thumbnail 1">
+          <img class="thumb" id="thumb2" src="" alt="Thumbnail 2">
+          <img class="thumb" id="thumb3" src="" alt="Thumbnail 3">
+        </div>
+      </section>
+
+      <section class="car-info-section">
+        <span class="car-badge">Available Now</span>
+        <h1 id="carName">Car Name</h1>
+        <p class="car-type" id="carCategory">Category</p>
+        <p class="car-price"><span id="carPrice">0</span> LE <span class="per-day">/ day</span></p>
+
+        <p id="carDescription" class="car-description">
+          Car description will appear here.
+        </p>
+
+        <div class="specs-grid">
+          <div class="spec-card">
+            <h3>Seats</h3>
+            <p id="carSeats">-</p>
+          </div>
+
+          <div class="spec-card">
+            <h3>Transmission</h3>
+            <p id="carTransmission">-</p>
+          </div>
+
+          <div class="spec-card">
+            <h3>Fuel</h3>
+            <p id="carFuel">-</p>
+          </div>
+
+          <div class="spec-card">
+            <h3>Doors</h3>
+            <p id="carDoors">-</p>
+          </div>
+
+          <div class="spec-card">
+            <h3>Luggage</h3>
+            <p id="carLuggage">-</p>
+          </div>
+
+          <div class="spec-card">
+            <h3>Color</h3>
+            <p id="carColor">-</p>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button id="bookNowBtn" class="primary-btn">Book Now</button>
+          <button id="backBtn" class="secondary-btn">Back</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <section class="related-section">
+    <div class="related-container">
+      <div class="related-header">
+        <p class="related-tag">You May Also Like</p>
+        <h2 class="section-title">Related Cars</h2>
+      </div>
+
+      <div class="related-cars-grid" id="relatedCarsGrid"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <h2 class="footer-logo">OWN THE ROAD</h2>
+        <p>Premium car rental service for every journey.</p>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>📍 Cairo, Egypt</p>
+        <p>📞 +20 123 456 7890</p>
+        <p>✉️ info@owntheroad.com</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Own The Road. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="carDetails.js"></script>
+</body>
+</html>
