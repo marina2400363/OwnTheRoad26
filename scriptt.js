@@ -1,12 +1,8 @@
 const searchBtn = document.querySelector(".search-btn");
-
 const locationInput = document.getElementById("location");
 const pickupDateInput = document.getElementById("pickup-date");
 const returnDateInput = document.getElementById("return-date");
 const carTypeSelect = document.getElementById("car-type");
-
-const carCards = document.querySelectorAll(".car-card");
-const carsSection = document.querySelector(".cars-section");
 const bookingMessage = document.getElementById("booking-message");
 
 function showMessage(message, type) {
@@ -17,23 +13,6 @@ function showMessage(message, type) {
 function hideMessage() {
   bookingMessage.textContent = "";
   bookingMessage.className = "booking-message";
-}
-
-function filterCars(filterValue) {
-  let found = false;
-
-  carCards.forEach(function (card) {
-    const cardCategory = card.getAttribute("data-category");
-
-    if (filterValue === "all" || filterValue === cardCategory) {
-      card.style.display = "";
-      found = true;
-    } else {
-      card.style.display = "none";
-    }
-  });
-
-  return found;
 }
 
 searchBtn.addEventListener("click", function () {
@@ -54,16 +33,10 @@ searchBtn.addEventListener("click", function () {
     return;
   }
 
-  const selectedType = carTypeValue === "" ? "all" : carTypeValue;
-  const carsFound = filterCars(selectedType);
+  localStorage.setItem("searchLocation", locationValue);
+  localStorage.setItem("searchPickup", pickupDateValue);
+  localStorage.setItem("searchReturn", returnDateValue);
+  localStorage.setItem("searchType", carTypeValue);
 
-  if (carsFound) {
-    showMessage("Available cars are now shown below.", "success");
-  } else {
-    showMessage("No cars found for the selected category.", "error");
-  }
-
-  carsSection.scrollIntoView({
-    behavior: "smooth"
-  });
+  window.location.href = "Cars list.html";
 });

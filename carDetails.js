@@ -7,7 +7,7 @@ const thumb1 = document.getElementById("thumb1");
 const thumb2 = document.getElementById("thumb2");
 const thumb3 = document.getElementById("thumb3");
 
-/* Cars database matching Student 2 */
+/* Cars database */
 const cars = [
   {
     id: 1,
@@ -16,7 +16,7 @@ const cars = [
     price: 6500,
     image: "S-class-exterior.jpeg",
     gallery: ["S-class-exterior.jpeg", "S-class-interior.png"],
-    description: "The Mercedes S-Class is a premium luxury sedan that delivers top-level comfort, advanced technology, and a refined driving experience for elegant city and highway trips.",
+    description: "The Mercedes S-Class is a premium luxury sedan that delivers top-level comfort, advanced technology, and a refined driving experience.",
     seats: 5,
     transmission: "Automatic",
     fuel: "Petrol",
@@ -31,13 +31,13 @@ const cars = [
     price: 5000,
     image: "bmw-x5-exterior.png",
     gallery: ["bmw-x5-exterior.png", "bmw-x5-interior.png"],
-    description: "The BMW X5 is a powerful luxury SUV that combines strong road performance, advanced safety features, and premium comfort for every kind of journey.",
+    description: "The BMW X5 is a powerful luxury SUV.",
     seats: 5,
     transmission: "Automatic",
     fuel: "Petrol",
     doors: 4,
     luggage: "3 Bags",
-    color: "White"
+    color: "Black"
   },
   {
     id: 3,
@@ -46,13 +46,13 @@ const cars = [
     price: 1800,
     image: "renault-kadjar-exterior.jpeg",
     gallery: ["renault-kadjar-exterior.jpeg", "renault-kadjar-interior.png"],
-    description: "The Renault Kadjar is a practical SUV that offers good comfort, a smooth ride, and affordable daily rental value for families and everyday travel.",
+    description: "The Renault Kadjar is a practical SUV.",
     seats: 5,
     transmission: "Automatic",
     fuel: "Petrol",
     doors: 4,
     luggage: "2 Bags",
-    color: "Gray"
+    color: "Red"
   },
   {
     id: 4,
@@ -61,13 +61,13 @@ const cars = [
     price: 2100,
     image: "BYD-exterior.jpeg",
     gallery: ["BYD-exterior.jpeg", "BYD-interior.png"],
-    description: "The BYD Song Plus is a modern electric SUV with smart design, eco-friendly driving, and a smooth comfortable experience for urban and long-distance trips.",
+    description: "Modern electric SUV.",
     seats: 5,
     transmission: "Automatic",
     fuel: "Electric",
     doors: 4,
     luggage: "2 Bags",
-    color: "Blue"
+    color: "White"
   },
   {
     id: 5,
@@ -76,31 +76,27 @@ const cars = [
     price: 4800,
     image: "skoda-octavia-exterior.png",
     gallery: ["skoda-octavia-exterior.png", "skoda-octavia-interior.png"],
-    description: "The Skoda Octavia is a spacious sedan with a premium feel, solid performance, and excellent comfort for business trips and daily driving.",
+    description: "Comfortable sedan.",
     seats: 5,
     transmission: "Automatic",
     fuel: "Petrol",
     doors: 4,
     luggage: "3 Bags",
-    color: "Silver"
+    color: "Grey"
   }
 ];
 
-/* Get selected car from localStorage */
-let selectedCar = JSON.parse(localStorage.getItem("selectedCar"));
+/* Get selected car name only */
+const selectedCarName = localStorage.getItem("selectedCarName");
 
-/* Default fallback car */
-if (!selectedCar) {
-  selectedCar = cars[0];
-}
-
-/* If selected car only has partial data, match it with full database */
-const matchedCar = cars.find(function (car) {
-  return car.name === selectedCar.name;
+/* Find selected car */
+let selectedCar = cars.find(function (car) {
+  return car.name === selectedCarName;
 });
 
-if (matchedCar) {
-  selectedCar = matchedCar;
+/* Fallback */
+if (!selectedCar) {
+  selectedCar = cars[0];
 }
 
 /* Show car details */
@@ -121,47 +117,51 @@ document.getElementById("carColor").textContent = selectedCar.color;
 const galleryImages = selectedCar.gallery || [selectedCar.image];
 const thumbs = [thumb1, thumb2, thumb3];
 
-/* Reset thumbnails */
 thumbs.forEach(function (thumb) {
-  thumb.style.display = "none";
-  thumb.classList.remove("active-thumb");
-});
-
-/* Show only available images */
-galleryImages.forEach(function (imageSrc, index) {
-  if (thumbs[index]) {
-    thumbs[index].src = imageSrc;
-    thumbs[index].alt = selectedCar.name + " Image " + (index + 1);
-    thumbs[index].style.display = "block";
+  if (thumb) {
+    thumb.style.display = "none";
+    thumb.classList.remove("active-thumb");
   }
 });
 
-/* Set first image as active */
+galleryImages.forEach(function (img, i) {
+  if (thumbs[i]) {
+    thumbs[i].src = img;
+    thumbs[i].alt = selectedCar.name + " image " + (i + 1);
+    thumbs[i].style.display = "block";
+  }
+});
+
 if (galleryImages.length > 0) {
   carImage.src = galleryImages[0];
-  thumb1.classList.add("active-thumb");
+  if (thumb1) {
+    thumb1.classList.add("active-thumb");
+  }
 }
 
-/* Thumbnail click behavior */
 thumbs.forEach(function (thumb) {
-  thumb.addEventListener("click", function () {
-    if (thumb.style.display !== "none") {
-      carImage.src = thumb.src;
+  if (thumb) {
+    thumb.addEventListener("click", function () {
+      if (thumb.style.display !== "none") {
+        carImage.src = thumb.src;
 
-      thumbs.forEach(function (t) {
-        t.classList.remove("active-thumb");
-      });
+        thumbs.forEach(function (t) {
+          if (t) {
+            t.classList.remove("active-thumb");
+          }
+        });
 
-      thumb.classList.add("active-thumb");
-    }
-  });
+        thumb.classList.add("active-thumb");
+      }
+    });
+  }
 });
 
 /* Book now */
 if (bookNowBtn) {
   bookNowBtn.addEventListener("click", function () {
-    localStorage.setItem("bookingCar", JSON.stringify(selectedCar));
-    window.location.href = "booking.html";
+    localStorage.setItem("bookingCar", selectedCar.name);
+    window.location.href = "m.html";
   });
 }
 
@@ -201,7 +201,7 @@ function renderRelatedCars() {
     const button = card.querySelector(".related-btn");
     button.addEventListener("click", function (event) {
       event.preventDefault();
-      localStorage.setItem("selectedCar", JSON.stringify(car));
+      localStorage.setItem("selectedCarName", car.name);
       window.location.href = "carDetails.html";
     });
 
